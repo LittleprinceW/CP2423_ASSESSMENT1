@@ -1,0 +1,2 @@
+# CP2423_ASSESSMENT1
+In this assignment, your group is to select two different types of Metasploittable 2 vulnerabilities (types: operating system, malicious software, system applications, or web-application issues) and explore what reasonable security controls could be used to prevent, reduce or detect these vulnerabilities (without fixing them). Group will create a report discussing the possible security controls, available tools for implementing these controls and create a class demonstration of two different types of controls (tools).
