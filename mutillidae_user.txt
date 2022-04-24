@@ -1,0 +1,11 @@
+GET /mutillidae/index.php?page=user-info.php&username=123&password=&user-info-php-submit-button=View+Account+Details HTTP/1.1
+Host: 192.168.1.18
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.1.18/mutillidae/index.php?page=user-info.php
+Connection: keep-alive
+Cookie: PHPSESSID=828cbc6ac0834c9f915f416530b7bc5d
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Fri, 22 Apr 2022 22:58:10 GMT
